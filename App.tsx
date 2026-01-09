@@ -4,7 +4,6 @@ import { Background } from './components/Background';
 import { LinkCard } from './components/LinkCard';
 import { ProjectGrid } from './components/ProjectGrid';
 import { ShareModal } from './components/ShareModal';
-import { IntroOverlay } from './components/IntroOverlay';
 import { audioService } from './services/audioService';
 import { PROFILE, LINKS, PROJECTS, AMBIENT_MUSIC_URL } from './constants';
 
@@ -13,8 +12,13 @@ const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [isReady, setIsReady] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Trigger main entrance animation immediately on mount
+    const timer = setTimeout(() => setIsReady(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleMute = () => {
     const newMutedState = !isMuted;
@@ -42,19 +46,8 @@ const App: React.FC = () => {
     setIsShareModalOpen(true);
   };
 
-  const handleIntroComplete = () => {
-    setShowIntro(false);
-    // Trigger main entrance animation
-    setTimeout(() => setIsReady(true), 100);
-  };
-
   return (
     <div className={`${isDarkMode ? 'dark' : ''} transition-colors duration-500`}>
-      {/* Intro Overlay - Displays before main content */}
-      {showIntro && (
-        <IntroOverlay onComplete={handleIntroComplete} isDarkMode={isDarkMode} />
-      )}
-
       <div className={`
         relative min-h-screen font-inter selection:bg-orange-500 selection:text-white
         ${isDarkMode ? 'text-gray-100 animate-gradient-dark' : 'text-gray-900 animate-gradient-light bg-orange-50'}
