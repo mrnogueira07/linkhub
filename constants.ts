@@ -5,7 +5,8 @@ import {
   Instagram, 
   Mail, 
   Globe,
-  MessageCircle
+  MessageCircle,
+  ShoppingBag
 } from 'lucide-react';
 import { Profile, LinkItem, ProjectItem } from './types';
 
@@ -17,6 +18,13 @@ export const PROFILE: Profile = {
 };
 
 export const LINKS: LinkItem[] = [
+  {
+    id: 'store',
+    title: 'Minha Loja de Streamers',
+    url: 'https://orelhastore.com/?ref=mrnogueira',
+    icon: ShoppingBag,
+    color: 'border-purple-500'
+  },
   {
     id: '1',
     title: 'Meu Portfólio',

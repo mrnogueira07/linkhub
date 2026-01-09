@@ -1,7 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { Particle, ShapeType } from '../types';
 
-export const Background: React.FC = () => {
+interface BackgroundProps {
+  isDarkMode: boolean;
+}
+
+export const Background: React.FC<BackgroundProps> = ({ isDarkMode }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
 
@@ -22,7 +26,6 @@ export const Background: React.FC = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Parallax intensity
       mouseRef.current = {
         x: (e.clientX - window.innerWidth / 2) * 0.02,
         y: (e.clientY - window.innerHeight / 2) * 0.02
@@ -31,19 +34,17 @@ export const Background: React.FC = () => {
 
     const initParticles = () => {
       particles = [];
-      // Less density for a cleaner look
       const particleCount = Math.min(window.innerWidth / 15, 60); 
-
       const shapes: ShapeType[] = ['circle', 'square', 'triangle', 'cross'];
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.2, // Slower movement
+          vx: (Math.random() - 0.5) * 0.2,
           vy: (Math.random() - 0.5) * 0.2,
-          size: Math.random() * 8 + 4, // Slightly larger shapes
-          alpha: Math.random() * 0.15 + 0.05, // Very subtle opacity
+          size: Math.random() * 8 + 4,
+          alpha: Math.random() * 0.15 + 0.05,
           rotation: Math.random() * Math.PI * 2,
           rotationSpeed: (Math.random() - 0.5) * 0.02,
           type: shapes[Math.floor(Math.random() * shapes.length)]
@@ -56,10 +57,13 @@ export const Background: React.FC = () => {
       ctx.translate(p.x, p.y);
       ctx.rotate(p.rotation);
       
-      // Apply parallax offset locally if needed, but here we move the X/Y directly in update loop
-      // for smoother trails if we wanted them, but we clearRect so it's fine.
-
-      ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha})`;
+      // Theme aware color
+      if (isDarkMode) {
+        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha})`;
+      } else {
+        ctx.strokeStyle = `rgba(0, 0, 0, ${p.alpha * 0.8})`; // Slightly darker for visibility on light bg
+      }
+      
       ctx.lineWidth = 1.5;
       ctx.beginPath();
 
@@ -92,22 +96,18 @@ export const Background: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(p => {
-        // Update physics
         p.x += p.vx;
         p.y += p.vy;
         p.rotation += p.rotationSpeed;
 
-        // Wrap around screen
         if (p.x < -50) p.x = canvas.width + 50;
         if (p.x > canvas.width + 50) p.x = -50;
         if (p.y < -50) p.y = canvas.height + 50;
         if (p.y > canvas.height + 50) p.y = -50;
 
-        // Apply Parallax to position for rendering
         const parallaxX = p.x + mouseRef.current.x * (p.size * 0.1);
         const parallaxY = p.y + mouseRef.current.y * (p.size * 0.1);
 
-        // Draw
         const renderParticle = { ...p, x: parallaxX, y: parallaxY };
         drawShape(ctx, renderParticle);
       });
@@ -126,7 +126,7 @@ export const Background: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isDarkMode]); // Re-run effect when theme changes
 
   return (
     <canvas 
