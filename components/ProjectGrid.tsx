@@ -6,9 +6,10 @@ import { audioService } from '../services/audioService';
 interface ProjectGridProps {
   projects: ProjectItem[];
   isDarkMode?: boolean;
+  onProjectClick: () => void; // New prop for handling clicks
 }
 
-export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode = true }) => {
+export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode = true, onProjectClick }) => {
   const [activeCategory, setActiveCategory] = useState<string>('Todos');
 
   // Extract unique categories from projects
@@ -25,6 +26,12 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
     audioService.playClickSound();
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation
+    audioService.playClickSound();
+    onProjectClick(); // Trigger the warning
   };
 
   const getCategoryIcon = (category: string) => {
@@ -108,20 +115,20 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
              <a 
                key={project.id}
                href={project.demoUrl}
-               target="_blank"
-               rel="noopener noreferrer"
+               onClick={handleCardClick} // Intercept click here
                className={`
-                 group relative flex flex-col p-4 rounded-2xl border transition-all duration-300
+                 group relative flex flex-col p-4 rounded-2xl border transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
+                 hover:-translate-y-2 hover:shadow-xl cursor-pointer
                  ${isDarkMode 
-                   ? 'bg-gray-900/40 border-white/10 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/5' 
-                   : 'bg-white/60 border-purple-100 hover:border-purple-300'}
+                   ? 'bg-gray-900/40 border-white/10 hover:border-purple-500/30 hover:shadow-purple-500/10' 
+                   : 'bg-white/60 border-purple-100 hover:border-purple-300 hover:shadow-purple-200/20'}
                `}
              >
                <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
                  <img 
                    src={project.imageUrl} 
                    alt={project.title}
-                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                  />
                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                  
@@ -133,12 +140,12 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
                  </div>
                </div>
                
-               <h3 className={`font-bold text-lg mb-1 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
+               <h3 className={`font-bold text-lg mb-1 transition-colors ${isDarkMode ? 'text-white group-hover:text-purple-300' : 'text-gray-900 group-hover:text-purple-700'}`}>{project.title}</h3>
                <p className={`text-sm mb-3 line-clamp-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{project.description}</p>
                
                <div className="flex flex-wrap gap-2 mt-auto">
                  {project.tags.map(tag => (
-                   <span key={tag} className={`text-[10px] px-2 py-1 rounded-full border ${isDarkMode ? 'bg-purple-500/10 border-purple-500/20 text-purple-400' : 'bg-purple-50 border-purple-200 text-purple-600'}`}>
+                   <span key={tag} className={`text-[10px] px-2 py-1 rounded-full border transition-colors ${isDarkMode ? 'bg-purple-500/10 border-purple-500/20 text-purple-400 group-hover:border-purple-500/40' : 'bg-purple-50 border-purple-200 text-purple-600 group-hover:border-purple-300'}`}>
                      {tag}
                    </span>
                  ))}

@@ -29,13 +29,13 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isDarkMode = true }) =
       className={`
         group relative w-full flex items-center justify-between p-4 mb-3
         backdrop-blur-md rounded-2xl border
-        transition-all duration-300 ease-out
-        hover:scale-[1.02] shadow-sm
-        active:scale-[0.98]
+        transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
+        hover:scale-[1.01] hover:-translate-y-1 shadow-sm hover:shadow-lg
+        active:scale-[0.98] active:translate-y-0
         overflow-hidden
         ${isDarkMode 
-          ? 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-purple-500/30 hover:shadow-purple-500/20' 
-          : 'bg-white/60 border-white/40 hover:bg-white/80 hover:border-purple-300 hover:shadow-purple-200/40'}
+          ? 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-purple-500/40 hover:shadow-purple-500/10' 
+          : 'bg-white/60 border-white/40 hover:bg-white/80 hover:border-purple-300 hover:shadow-purple-200/30'}
       `}
     >
       {/* Dynamic Glow Effect */}

@@ -4,6 +4,7 @@ import { Background } from './components/Background';
 import { LinkCard } from './components/LinkCard';
 import { ProjectGrid } from './components/ProjectGrid';
 import { ShareModal } from './components/ShareModal';
+import { Toast } from './components/Toast';
 import { audioService } from './services/audioService';
 import { supabase } from './services/supabase';
 import { getIconByName } from './utils/iconMap';
@@ -16,6 +17,9 @@ const App: React.FC = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isReady, setIsReady] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  
+  // Toast State
+  const [toast, setToast] = useState({ isVisible: false, message: '' });
 
   // Data State
   const [profile, setProfile] = useState<Profile>(DEFAULT_PROFILE);
@@ -35,9 +39,6 @@ const App: React.FC = () => {
           .single();
 
         if (profileData && !profileError) {
-          // Usamos explicitamente as constantes DEFAULT_PROFILE para avatar e banner
-          // para garantir que as URLs assinadas fornecidas no código sejam usadas,
-          // ignorando o que está no banco de dados temporariamente.
           setProfile({
             name: profileData.name || DEFAULT_PROFILE.name,
             role: profileData.role || DEFAULT_PROFILE.role,
@@ -46,7 +47,6 @@ const App: React.FC = () => {
             bio: profileData.bio || DEFAULT_PROFILE.bio
           });
         } else {
-           // Fallback to default if DB is empty
            setProfile(DEFAULT_PROFILE);
         }
 
@@ -115,6 +115,14 @@ const App: React.FC = () => {
   const handleShareClick = () => {
     audioService.playClickSound();
     setIsShareModalOpen(true);
+  };
+
+  const handleProjectClick = () => {
+    setToast({ isVisible: true, message: '🚧 Projeto em fase de desenvolvimento!' });
+  };
+
+  const closeToast = () => {
+    setToast(prev => ({ ...prev, isVisible: false }));
   };
 
   // Logic to determine button classes based on Music State (Glass Effect)
@@ -261,8 +269,12 @@ const App: React.FC = () => {
               ))}
             </div>
 
-            {/* Projects Section */}
-            <ProjectGrid projects={projects} isDarkMode={isDarkMode} />
+            {/* Projects Section - Passing handler to show Toast */}
+            <ProjectGrid 
+              projects={projects} 
+              isDarkMode={isDarkMode} 
+              onProjectClick={handleProjectClick}
+            />
 
             {/* Footer */}
             <footer className={`mt-16 text-center text-xs pb-2 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
@@ -278,6 +290,14 @@ const App: React.FC = () => {
           onClose={() => setIsShareModalOpen(false)} 
           url={window.location.href}
           title={`Confira o Link HUB de ${profile.name}`}
+          isDarkMode={isDarkMode}
+        />
+
+        {/* Global Toast Notification */}
+        <Toast 
+          message={toast.message}
+          isVisible={toast.isVisible}
+          onClose={closeToast}
           isDarkMode={isDarkMode}
         />
       </div>
