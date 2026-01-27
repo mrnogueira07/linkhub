@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>Link HUB</title>
     <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/79/0b/ce/790bcefa4ce60aa2f78b3d12fbb5c971.jpg" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,12 +22,19 @@
             },
             animation: {
               'tilt': 'tilt 10s infinite linear',
+              'sun-pass': 'sun-pass 5s infinite ease-in-out',
             },
             keyframes: {
               tilt: {
                 '0%, 50%, 100%': { transform: 'rotate(0deg)' },
                 '25%': { transform: 'rotate(1deg)' },
                 '75%': { transform: 'rotate(-1deg)' },
+              },
+              'sun-pass': {
+                '0%': { transform: 'translateX(-150%) skewX(-20deg)', opacity: '0' },
+                '10%': { opacity: '0.4' },
+                '40%': { transform: 'translateX(250%) skewX(-20deg)', opacity: '0' },
+                '100%': { transform: 'translateX(250%) skewX(-20deg)', opacity: '0' }
               }
             }
           }
@@ -41,15 +49,15 @@
         overflow-x: hidden;
       }
       
-      /* Animated Gradient Backgrounds */
+      /* Animated Gradient Backgrounds - PURPLE THEME */
       .animate-gradient-dark {
-        background: linear-gradient(-45deg, #0f0a05, #2a1005, #431407, #1c1917);
+        background: linear-gradient(-45deg, #13001e, #240046, #3c096c, #10002b);
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
       }
 
       .animate-gradient-light {
-        background: linear-gradient(-45deg, #fff7ed, #ffedd5, #fed7aa, #fff7ed);
+        background: linear-gradient(-45deg, #f3e5f5, #e1bee7, #d1c4e9, #f3e5f5);
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
       }
@@ -68,14 +76,14 @@
         animation: shimmer 2s infinite;
       }
 
-      /* Custom scrollbar */
+      /* Custom scrollbar - Purple Tint */
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: transparent; }
       ::-webkit-scrollbar-thumb {
-        background: rgba(249, 115, 22, 0.3); /* Orange tint */
+        background: rgba(168, 85, 247, 0.3); /* Purple tint */
         border-radius: 4px;
       }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(249, 115, 22, 0.5); }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.5); }
     </style>
   <script type="importmap">
 {
@@ -85,7 +93,8 @@
     "vite": "https://esm.sh/vite@^7.3.1",
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.39.7"
   }
 }
 </script>

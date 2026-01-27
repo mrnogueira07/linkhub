@@ -4,6 +4,7 @@ export interface Profile {
   name: string;
   role: string;
   avatarUrl: string;
+  bannerUrl?: string; // New field for profile banner
   bio: string;
 }
 
@@ -23,6 +24,7 @@ export interface ProjectItem {
   demoUrl: string;
   repoUrl?: string;
   tags: string[];
+  category: string; // New field for folders/tabs
 }
 
 export type ShapeType = 'circle' | 'square' | 'triangle' | 'cross';
@@ -37,4 +39,5 @@ export interface Particle {
   rotation: number;
   rotationSpeed: number;
   type: ShapeType;
+  color: string; // Neon color
 }

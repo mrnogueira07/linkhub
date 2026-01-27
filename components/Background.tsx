@@ -18,18 +18,38 @@ export const Background: React.FC<BackgroundProps> = ({ isDarkMode }) => {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
+    let sensitivity = 0.02; 
     
+    // Neon Colors: Green, Cyan/Blue, Red, Pink/Magenta
+    const neonColors = [
+      '#00ff00', // Green
+      '#00ffff', // Cyan
+      '#ff0040', // Red
+      '#ff00ff'  // Pink
+    ];
+
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      sensitivity = window.innerWidth < 768 ? 0.08 : 0.02;
       initParticles();
     };
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = {
-        x: (e.clientX - window.innerWidth / 2) * 0.02,
-        y: (e.clientY - window.innerHeight / 2) * 0.02
+        x: (e.clientX - window.innerWidth / 2) * sensitivity,
+        y: (e.clientY - window.innerHeight / 2) * sensitivity
       };
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        mouseRef.current = {
+          x: (touch.clientX - window.innerWidth / 2) * sensitivity,
+          y: (touch.clientY - window.innerHeight / 2) * sensitivity
+        };
+      }
     };
 
     const initParticles = () => {
@@ -44,10 +64,11 @@ export const Background: React.FC<BackgroundProps> = ({ isDarkMode }) => {
           vx: (Math.random() - 0.5) * 0.2,
           vy: (Math.random() - 0.5) * 0.2,
           size: Math.random() * 8 + 4,
-          alpha: Math.random() * 0.15 + 0.05,
+          alpha: Math.random() * 0.3 + 0.1, // Increased alpha for neon visibility
           rotation: Math.random() * Math.PI * 2,
           rotationSpeed: (Math.random() - 0.5) * 0.02,
-          type: shapes[Math.floor(Math.random() * shapes.length)]
+          type: shapes[Math.floor(Math.random() * shapes.length)],
+          color: neonColors[Math.floor(Math.random() * neonColors.length)]
         });
       }
     };
@@ -57,11 +78,15 @@ export const Background: React.FC<BackgroundProps> = ({ isDarkMode }) => {
       ctx.translate(p.x, p.y);
       ctx.rotate(p.rotation);
       
-      // Theme aware color
+      // Use the specific neon color assigned to the particle
+      // Use Global Alpha for transparency instead of rgba string construction for performance with hex colors
+      ctx.globalAlpha = isDarkMode ? p.alpha : p.alpha * 0.8;
+      ctx.strokeStyle = p.color;
+      
+      // Add a slight glow effect to the neon lines
       if (isDarkMode) {
-        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha})`;
-      } else {
-        ctx.strokeStyle = `rgba(0, 0, 0, ${p.alpha * 0.8})`; // Slightly darker for visibility on light bg
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = p.color;
       }
       
       ctx.lineWidth = 1.5;
@@ -117,6 +142,7 @@ export const Background: React.FC<BackgroundProps> = ({ isDarkMode }) => {
 
     window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
     
     handleResize();
     draw();
@@ -124,9 +150,10 @@ export const Background: React.FC<BackgroundProps> = ({ isDarkMode }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isDarkMode]); // Re-run effect when theme changes
+  }, [isDarkMode]);
 
   return (
     <canvas 

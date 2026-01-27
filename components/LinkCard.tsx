@@ -34,8 +34,8 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isDarkMode = true }) =
         active:scale-[0.98]
         overflow-hidden
         ${isDarkMode 
-          ? 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-orange-500/10' 
-          : 'bg-white/60 border-white/40 hover:bg-white/80 hover:border-white/60 hover:shadow-orange-200/40'}
+          ? 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-purple-500/30 hover:shadow-purple-500/20' 
+          : 'bg-white/60 border-white/40 hover:bg-white/80 hover:border-purple-300 hover:shadow-purple-200/40'}
       `}
     >
       {/* Dynamic Glow Effect */}
@@ -49,8 +49,8 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isDarkMode = true }) =
           <div className={`
             p-2.5 rounded-xl transition-colors duration-300 shadow-sm
             ${isDarkMode 
-              ? 'bg-white/5 text-gray-200 group-hover:bg-orange-500 group-hover:text-white' 
-              : 'bg-white/80 text-orange-600 group-hover:bg-orange-500 group-hover:text-white'}
+              ? 'bg-white/5 text-gray-200 group-hover:bg-purple-600 group-hover:text-white' 
+              : 'bg-white/80 text-purple-600 group-hover:bg-purple-500 group-hover:text-white'}
           `}>
             <Icon size={20} strokeWidth={1.5} />
           </div>
@@ -69,7 +69,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isDarkMode = true }) =
         transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 p-1 rounded-full
         ${isDarkMode 
            ? 'text-gray-400 group-hover:text-white group-hover:bg-white/10' 
-           : 'text-gray-400 group-hover:text-orange-600 group-hover:bg-orange-100'}
+           : 'text-gray-400 group-hover:text-purple-600 group-hover:bg-purple-100'}
       `}>
         <ArrowUpRight size={18} strokeWidth={2} />
       </div>
