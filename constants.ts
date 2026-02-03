@@ -13,8 +13,8 @@ import { Profile, LinkItem, ProjectItem } from './types';
 export const PROFILE: Profile = {
   name: "Matheus Nogueira",
   role: "Desenvolvedor Full Stack & UI Designer",
-  // URL assinada do Supabase fornecida
-  avatarUrl: "https://vokjjkehfdulfavagvcb.supabase.co/storage/v1/object/sign/IMG/foto.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84NTljODg1Ny1hMjliLTRjNzMtYjM3ZS00MzRmNzY4YmM4Y2YiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUcvZm90by5wbmciLCJpYXQiOjE3Njk1NDA5MTksImV4cCI6MTgwMTA3NjkxOX0.35iEPR-J-2L4oYN3-FWkmYPh7cX1iTrFQkWqtDHgxRk",
+  // URL atualizada para a nova foto
+  avatarUrl: "https://i.pinimg.com/736x/69/36/05/693605df992b0509b97671fba58051a7.jpg",
   // Nova URL do Banner (Capa LinkedIn)
   bannerUrl: "https://vokjjkehfdulfavagvcb.supabase.co/storage/v1/object/sign/IMG/capa%20linkedin%20INNYX.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84NTljODg1Ny1hMjliLTRjNzMtYjM3ZS00MzRmNzY4YmM4Y2YiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUcvY2FwYSBsaW5rZWRpbiBJTk5ZWC5qcGciLCJpYXQiOjE3Njk1NDE2NzUsImV4cCI6MTgwMTA3NzY3NX0.lMfemBWqyLUn891YO_Or4EbWAQ6uLZivEyNV_wnKHWA", 
   bio: "Criando experiências digitais imersivas. Apaixonado por React, Design Systems e Café ☕."

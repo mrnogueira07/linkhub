@@ -221,7 +221,7 @@ const App: React.FC = () => {
                 {/* Avatar Glow - Neon Theme */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full blur opacity-40 group-hover:opacity-80 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 
-                {/* Image with positioning fix - object-[center_35%] moves focus slightly up to capture face */}
+                {/* Image with positioning fix - object-[center_15%] focuses on head/chest area */}
                 <img 
                   src={getAvatarSrc(profile.avatarUrl)}
                   alt={profile.name}
@@ -233,7 +233,7 @@ const App: React.FC = () => {
                     }
                   }}
                   className={`
-                    relative w-32 h-32 rounded-full border-4 object-cover object-[center_35%] shadow-2xl transition-transform duration-500 group-hover:scale-105
+                    relative w-32 h-32 rounded-full border-4 object-cover object-[center_15%] shadow-2xl transition-transform duration-500 group-hover:scale-105
                     ${isDarkMode ? 'border-gray-900 bg-gray-900' : 'border-white bg-white'}
                   `}
                 />
@@ -278,8 +278,7 @@ const App: React.FC = () => {
 
             {/* Footer */}
             <footer className={`mt-16 text-center text-xs pb-2 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-              <p>© {new Date().getFullYear()} {profile.name}.</p>
-              <p className="mt-1 opacity-60">Link HUB</p>
+              <p>© {new Date().getFullYear()} {profile.name}. Todos os direitos reservados.</p>
             </footer>
           </div>
         </main>
