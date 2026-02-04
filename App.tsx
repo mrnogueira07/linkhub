@@ -56,13 +56,21 @@ const App: React.FC = () => {
           .order('order_index', { ascending: true });
 
         if (linksData && !linksError && linksData.length > 0) {
-          const formattedLinks: LinkItem[] = linksData.map((item: any) => ({
-            id: item.id.toString(),
-            title: item.title,
-            url: item.url,
-            icon: getIconByName(item.icon_name || 'Globe'),
-            color: item.color || 'border-purple-400'
-          }));
+          const formattedLinks: LinkItem[] = linksData.map((item: any) => {
+            // Hotfix: Force the new Portfolio URL regardless of DB value
+            let url = item.url;
+            if (['Meu Portfólio', 'Portfólio', 'Portfolio', 'Meu Portfolio'].includes(item.title)) {
+              url = 'https://matheusnogueira.vercel.app/';
+            }
+
+            return {
+              id: item.id.toString(),
+              title: item.title,
+              url: url,
+              icon: getIconByName(item.icon_name || 'Globe'),
+              color: item.color || 'border-purple-400'
+            };
+          });
           setLinks(formattedLinks);
         }
 

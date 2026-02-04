@@ -6,7 +6,7 @@ import { audioService } from '../services/audioService';
 interface ProjectGridProps {
   projects: ProjectItem[];
   isDarkMode?: boolean;
-  onProjectClick: () => void; // New prop for handling clicks
+  onProjectClick: () => void; // New prop for handling clicks on disabled items
 }
 
 export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode = true, onProjectClick }) => {
@@ -28,8 +28,15 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
     audioService.playClickSound();
   };
 
-  const handleCardClick = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent navigation
+  const handleCardClick = (e: React.MouseEvent, url: string) => {
+    // If it's a valid URL (not # or empty), allow default behavior (opening link)
+    if (url && url !== '#' && !url.includes('javascript:void')) {
+      audioService.playClickSound();
+      return;
+    }
+
+    // Otherwise, block and show toast
+    e.preventDefault(); 
     audioService.playClickSound();
     onProjectClick(); // Trigger the warning
   };
@@ -115,7 +122,9 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
              <a 
                key={project.id}
                href={project.demoUrl}
-               onClick={handleCardClick} // Intercept click here
+               target="_blank"
+               rel="noopener noreferrer"
+               onClick={(e) => handleCardClick(e, project.demoUrl)} 
                className={`
                  group relative flex flex-col p-4 rounded-2xl border transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
                  hover:-translate-y-2 hover:shadow-xl cursor-pointer

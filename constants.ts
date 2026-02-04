@@ -31,7 +31,7 @@ export const LINKS: LinkItem[] = [
   {
     id: '1',
     title: 'Meu Portfólio',
-    url: 'https://portifoliomrnogueira.lovable.app/',
+    url: 'https://matheusnogueira.vercel.app/',
     icon: Globe,
     color: 'border-blue-500'
   },
