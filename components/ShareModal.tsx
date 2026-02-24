@@ -82,7 +82,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose, url, ti
           </button>
         </div>
 
-        <div className="grid grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
           <button onClick={() => handleShare('whatsapp')} className="flex flex-col items-center gap-2 group">
             <div className={`
               w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 border

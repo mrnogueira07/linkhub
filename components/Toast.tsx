@@ -28,8 +28,8 @@ export const Toast: React.FC<ToastProps> = ({ message, isVisible, onClose, isDar
         ? 'bg-gray-900/90 border-yellow-500/30 text-white shadow-yellow-500/10' 
         : 'bg-white/90 border-yellow-500/30 text-gray-800 shadow-yellow-500/10'}
     `}>
-      <AlertCircle className="text-yellow-500" size={20} />
-      <span className="text-sm font-medium whitespace-nowrap">{message}</span>
+      <AlertCircle className="text-yellow-500 shrink-0" size={20} />
+      <span className="text-sm font-medium text-center">{message}</span>
       <button 
         onClick={onClose}
         className={`ml-2 p-1 rounded-full transition-colors ${isDarkMode ? 'hover:bg-white/10' : 'hover:bg-black/5'}`}

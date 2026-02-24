@@ -56,7 +56,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
     <div className="w-full mt-16 animate-fade-in-up">
       <div className="flex items-center gap-3 mb-6">
         <div className={`h-px flex-1 ${isDarkMode ? 'bg-gradient-to-r from-transparent via-purple-500/50 to-transparent' : 'bg-gradient-to-r from-transparent via-purple-300 to-transparent'}`} />
-        <h2 className={`text-2xl font-bold bg-clip-text text-transparent ${isDarkMode ? 'bg-gradient-to-r from-purple-200 via-white to-purple-200' : 'bg-gradient-to-r from-purple-700 via-purple-500 to-purple-700'}`}>
+        <h2 className={`text-xl sm:text-2xl font-bold bg-clip-text text-transparent ${isDarkMode ? 'bg-gradient-to-r from-purple-200 via-white to-purple-200' : 'bg-gradient-to-r from-purple-700 via-purple-500 to-purple-700'}`}>
           Projetos
         </h2>
         <div className={`h-px flex-1 ${isDarkMode ? 'bg-gradient-to-r from-transparent via-purple-500/50 to-transparent' : 'bg-gradient-to-r from-transparent via-purple-300 to-transparent'}`} />
@@ -72,7 +72,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
               key={cat}
               onClick={() => handleCategoryChange(cat)}
               className={`
-                flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 border
+                flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium transition-all duration-300 border
                 ${isActive 
                   ? 'bg-purple-600 text-white border-purple-500 shadow-lg shadow-purple-500/25 scale-105' 
                   : isDarkMode

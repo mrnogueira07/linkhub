@@ -160,7 +160,7 @@ const App: React.FC = () => {
         relative min-h-screen font-inter selection:bg-purple-500 selection:text-white
         ${isDarkMode ? 'text-gray-100 animate-gradient-dark' : 'text-gray-900 animate-gradient-light bg-purple-50'}
         transition-colors duration-500
-        flex flex-col items-center justify-center py-6 sm:py-10 overflow-hidden
+        flex flex-col items-center justify-center py-4 sm:py-10 overflow-hidden
       `}>
         {/* Canvas Layer for Minimalist Shapes */}
         <Background isDarkMode={isDarkMode} />
@@ -175,7 +175,7 @@ const App: React.FC = () => {
         {/* Main Content Card */}
         <main className={`
           relative z-10 w-full max-w-[600px] mx-4 flex flex-col items-center
-          rounded-[2.5rem] border shadow-2xl backdrop-blur-xl overflow-hidden
+          rounded-3xl sm:rounded-[2.5rem] border shadow-2xl backdrop-blur-xl overflow-hidden
           transition-all duration-1000 ease-out
           ${isDarkMode 
             ? 'bg-gray-950/40 border-white/10 shadow-black/40' 
@@ -184,7 +184,7 @@ const App: React.FC = () => {
         `}>
           
           {/* Banner Section */}
-          <div className="w-full h-32 md:h-40 relative">
+          <div className="w-full h-28 sm:h-32 md:h-40 relative">
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
             {profile.bannerUrl && (
               <img 
@@ -222,9 +222,9 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full px-6 pb-10 flex flex-col items-center">
+          <div className="w-full px-4 sm:px-6 pb-10 flex flex-col items-center">
             {/* Profile Section with Overlapping Avatar */}
-            <div className="flex flex-col items-center text-center mb-8 relative -mt-16 z-20">
+            <div className="flex flex-col items-center text-center mb-8 relative -mt-14 sm:-mt-16 z-20">
               <div className="relative group cursor-default">
                 {/* Avatar Glow - Neon Theme */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full blur opacity-40 group-hover:opacity-80 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
@@ -241,7 +241,7 @@ const App: React.FC = () => {
                     }
                   }}
                   className={`
-                    relative w-32 h-32 rounded-full border-4 object-cover object-[center_15%] shadow-2xl transition-transform duration-500 group-hover:scale-105
+                    relative w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 object-cover object-[center_15%] shadow-2xl transition-transform duration-500 group-hover:scale-105
                     ${isDarkMode ? 'border-gray-900 bg-gray-900' : 'border-white bg-white'}
                   `}
                 />
@@ -252,7 +252,7 @@ const App: React.FC = () => {
                 `}></div>
               </div>
               
-              <h1 className={`mt-4 text-3xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              <h1 className={`mt-4 text-2xl sm:text-3xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 {profile.name}
               </h1>
               <div className={`

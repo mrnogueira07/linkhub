@@ -27,7 +27,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isDarkMode = true }) =
       onMouseEnter={handleMouseEnter}
       onClick={handleClick}
       className={`
-        group relative w-full flex items-center justify-between p-4 mb-3
+        group relative w-full flex items-center justify-between p-3.5 sm:p-4 mb-3
         backdrop-blur-md rounded-2xl border
         transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
         hover:scale-[1.01] hover:-translate-y-1 shadow-sm hover:shadow-lg
