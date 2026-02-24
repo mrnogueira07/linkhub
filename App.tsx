@@ -60,7 +60,7 @@ const App: React.FC = () => {
             // Hotfix: Force the new Portfolio URL regardless of DB value
             let url = item.url;
             if (['Meu Portfólio', 'Portfólio', 'Portfolio', 'Meu Portfolio'].includes(item.title)) {
-              url = 'https://matheusnogueira.vercel.app/';
+              url = 'https://mrnogueira.vercel.app/';
             }
 
             return {

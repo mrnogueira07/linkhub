@@ -1,9 +1,7 @@
 import { 
   Github, 
   Linkedin, 
-  Twitter, 
   Instagram, 
-  Mail, 
   Globe,
   MessageCircle,
   ShoppingBag
@@ -31,7 +29,7 @@ export const LINKS: LinkItem[] = [
   {
     id: '1',
     title: 'Meu Portfólio',
-    url: 'https://matheusnogueira.vercel.app/',
+    url: 'https://mrnogueira.vercel.app/',
     icon: Globe,
     color: 'border-blue-500'
   },
