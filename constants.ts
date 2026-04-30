@@ -14,7 +14,7 @@ export const PROFILE: Profile = {
   // URL atualizada para a nova foto
   avatarUrl: "https://i.pinimg.com/736x/69/36/05/693605df992b0509b97671fba58051a7.jpg",
   // Nova URL do Banner (Capa LinkedIn)
-  bannerUrl: "https://vokjjkehfdulfavagvcb.supabase.co/storage/v1/object/sign/IMG/capa%20linkedin%20INNYX.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84NTljODg1Ny1hMjliLTRjNzMtYjM3ZS00MzRmNzY4YmM4Y2YiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUcvY2FwYSBsaW5rZWRpbiBJTk5ZWC5qcGciLCJpYXQiOjE3Njk1NDE2NzUsImV4cCI6MTgwMTA3NzY3NX0.lMfemBWqyLUn891YO_Or4EbWAQ6uLZivEyNV_wnKHWA", 
+  bannerUrl: "https://media.licdn.com/dms/image/v2/D4D16AQHJYXUBwsFdJA/profile-displaybackgroundimage-shrink_200_800/B4DZv7UwFTKMAU-/0/1769448085517?e=1779321600&v=beta&t=1ewAOCNUVbdiGGnLWHoJDVgTimH4FJGUBM2POILMlzQ", 
   bio: "Criando experiências digitais imersivas. Apaixonado por React, Design Systems e Café ☕."
 };
 
