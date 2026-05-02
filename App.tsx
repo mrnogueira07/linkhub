@@ -8,6 +8,7 @@ import { Toast } from './components/Toast';
 import { audioService } from './services/audioService';
 import { supabase } from './services/supabase';
 import { getIconByName } from './utils/iconMap';
+import { initSecurityMeasures, triggerHoneypot } from './utils/security';
 import { PROFILE as DEFAULT_PROFILE, LINKS as DEFAULT_LINKS, PROJECTS as DEFAULT_PROJECTS, AMBIENT_MUSIC_URL } from './constants';
 import { Profile, LinkItem, ProjectItem } from './types';
 
@@ -27,6 +28,9 @@ const App: React.FC = () => {
   const [projects, setProjects] = useState<ProjectItem[]>(DEFAULT_PROJECTS);
 
   useEffect(() => {
+    // Initialize security measures
+    initSecurityMeasures();
+
     // Trigger main entrance animation immediately on mount
     const timer = setTimeout(() => setIsReady(true), 100);
 
@@ -287,6 +291,15 @@ const App: React.FC = () => {
             {/* Footer */}
             <footer className={`mt-16 text-center text-xs pb-2 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
               <p>© {new Date().getFullYear()} {profile.name}. Todos os direitos reservados.</p>
+              {/* Security Honeypot - DO NOT INTERACT */}
+              <input 
+                type="text" 
+                style={{ opacity: 0, position: 'absolute', height: 0, width: 0, zIndex: -1 }} 
+                tabIndex={-1} 
+                autoComplete="off"
+                onChange={triggerHoneypot}
+                className="hidden-admin-field"
+              />
             </footer>
           </div>
         </main>

@@ -39,21 +39,52 @@ export const sanitizeText = (text: string): string => {
   return text.replace(/[<>]/g, '');
 };
 
-// Security Console Warning
+// Security Console Warning and Deterrents
 export const initSecurityMeasures = () => {
-  // Use Vite's standard environment check
-  if ((import.meta as any).env.PROD) {
-    // Disable right click (Weak protection, but requested deterrent)
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
+  // Prevent common simple scraping patterns
+  if (typeof window !== 'undefined') {
+    // Disable context menu
+    if ((import.meta as any).env.PROD) {
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+    }
 
-    // Console warning
-    console.log(
-      '%cATENÇÃO!',
-      'color: red; font-size: 50px; font-weight: bold; text-shadow: 2px 2px black;'
-    );
-    console.log(
-      '%cEste é um recurso de navegador voltado para desenvolvedores. Se alguém lhe disse para copiar e colar algo aqui para habilitar um recurso ou "hackear" o site de alguém, isso é uma fraude e você dará a ele acesso à sua conta.',
-      'font-size: 18px;'
-    );
+    // Anti-debugging honeypot
+    const trap = () => {
+      const start = Date.now();
+      // eslint-disable-next-line no-debugger
+      debugger; // This will trigger if DevTools is open and paused on debugger
+      const end = Date.now();
+      if (end - start > 100) {
+        console.warn('%cSECURITY ALERT: Debugger detected. Activity logged.', 'color: red; font-weight: bold;');
+      }
+    };
+
+    // Run trap occasionally
+    setInterval(() => {
+      if ((import.meta as any).env.PROD) {
+        trap();
+      }
+    }, 5000);
+
+    // Enhanced Console warning
+    if ((import.meta as any).env.PROD) {
+      console.log(
+        '%c🛑 PARE!',
+        'color: #ff0000; font-size: 50px; font-weight: bold; -webkit-text-stroke: 1px black;'
+      );
+      console.log(
+        '%cEsta é uma área restrita para desenvolvedores. Se alguém lhe pediu para colar um código aqui, você está sendo vítima de um ataque de engenharia social (Self-XSS).',
+        'font-size: 20px; color: #ff5555;'
+      );
+      console.log(
+        '%cTentativas de acesso não autorizado são monitoradas e registradas.',
+        'font-size: 14px; font-style: italic;'
+      );
+    }
   }
+};
+
+// Fake Honeypot Trigger for UI
+export const triggerHoneypot = () => {
+  console.error('%cTRAP TRIGGERED: Unauthorized access to shadowed administrative elements. Remote IP flagged.', 'background: red; color: white; padding: 10px; font-size: 16px; border-radius: 5px;');
 };

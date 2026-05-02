@@ -3,8 +3,7 @@ import {
   Linkedin, 
   Instagram, 
   Globe,
-  MessageCircle,
-  ShoppingBag
+  Smartphone
 } from 'lucide-react';
 import { Profile, LinkItem, ProjectItem } from './types';
 
@@ -15,17 +14,10 @@ export const PROFILE: Profile = {
   avatarUrl: "https://i.pinimg.com/736x/69/36/05/693605df992b0509b97671fba58051a7.jpg",
   // Nova URL do Banner (Capa LinkedIn)
   bannerUrl: "https://media.licdn.com/dms/image/v2/D4D16AQHJYXUBwsFdJA/profile-displaybackgroundimage-shrink_200_800/B4DZv7UwFTKMAU-/0/1769448085517?e=1779321600&v=beta&t=1ewAOCNUVbdiGGnLWHoJDVgTimH4FJGUBM2POILMlzQ", 
-  bio: "Criando experiências digitais imersivas. Apaixonado por React, Design Systems e Café ☕."
+  bio: "Desenvolvendo tecnologia que simplifica o agora. Acredito que o código deve ser invisível e eficiente, para que sobre tempo para o que realmente importa: as pessoas."
 };
 
 export const LINKS: LinkItem[] = [
-  {
-    id: 'store',
-    title: 'Minha Loja de Streamers',
-    url: 'https://orelhastore.com/?ref=mrnogueira',
-    icon: ShoppingBag,
-    color: 'border-purple-500'
-  },
   {
     id: '1',
     title: 'Meu Portfólio',
@@ -58,7 +50,7 @@ export const LINKS: LinkItem[] = [
     id: '5',
     title: 'Entre em Contato',
     url: 'https://wa.me/5592981838704',
-    icon: MessageCircle,
+    icon: Smartphone,
     color: 'border-green-500'
   }
 ];
