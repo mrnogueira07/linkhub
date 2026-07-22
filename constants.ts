@@ -9,12 +9,12 @@ import { Profile, LinkItem, ProjectItem } from './types';
 
 export const PROFILE: Profile = {
   name: "Matheus Nogueira",
-  role: "Desenvolvedor Full Stack & UI Designer",
+  role: "",
   // URL atualizada para a nova foto
-  avatarUrl: "https://i.pinimg.com/736x/69/36/05/693605df992b0509b97671fba58051a7.jpg",
+  avatarUrl: "https://media.licdn.com/dms/image/v2/D4D03AQHxU4emL5ZJGA/profile-displayphoto-scale_400_400/B4DZ.E_8V1I0Ag-/0/1784642785033?e=1786579200&v=beta&t=CzCzB_VjkLtkHfGb0h27f1xsemD5h8_VDtAh3npPDk8",
   // Nova URL do Banner (Capa LinkedIn)
-  bannerUrl: "https://media.licdn.com/dms/image/v2/D4D16AQHJYXUBwsFdJA/profile-displaybackgroundimage-shrink_200_800/B4DZv7UwFTKMAU-/0/1769448085517?e=1779321600&v=beta&t=1ewAOCNUVbdiGGnLWHoJDVgTimH4FJGUBM2POILMlzQ", 
-  bio: "Desenvolvendo tecnologia que simplifica o agora. Acredito que o código deve ser invisível e eficiente, para que sobre tempo para o que realmente importa: as pessoas."
+  bannerUrl: "https://media.licdn.com/dms/image/v2/D4D16AQHJYXUBwsFdJA/profile-displaybackgroundimage-shrink_350_1400/B4DZv7UwFTKMAY-/0/1769448085517?e=1786579200&v=beta&t=EdQEZ7A_WGnl9l_jIqobFZwWW5BR_bWfjTL1a6CmHx0", 
+  bio: "Desenvolvedor de Jogos & Web | Designer & Editor de Vídeo | Unindo Código, Interatividade e Design"
 };
 
 export const LINKS: LinkItem[] = [
@@ -57,49 +57,22 @@ export const LINKS: LinkItem[] = [
 
 export const PROJECTS: ProjectItem[] = [
   {
-    id: 'p1',
-    title: 'E-Commerce Dashboard',
-    description: 'Um painel administrativo completo com gráficos em tempo real e modo escuro.',
-    imageUrl: 'https://picsum.photos/id/1/600/400',
-    demoUrl: '#',
-    tags: ['React', 'Tailwind', 'Recharts'],
-    category: 'Desenvolvimento Web'
+    id: 'emanuel-car',
+    title: 'Emanuel Car',
+    description: 'Landing page moderna, responsiva e otimizada para conversão de vendas no setor automotivo.',
+    imageUrl: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80',
+    demoUrl: 'https://emanuelcar.vercel.app/',
+    tags: ['React', 'Tailwind CSS', 'Landing Page', 'SEO'],
+    category: 'Landing Page'
   },
   {
-    id: 'p2',
-    title: 'Space Shooter Unity',
-    description: 'Um jogo de nave espacial 2D com física realista e sistema de pontuação.',
-    imageUrl: 'https://picsum.photos/id/234/600/400',
-    demoUrl: '#',
-    tags: ['Unity', 'C#', 'Game Dev'],
-    category: 'Desenvolvimento de Jogos'
-  },
-  {
-    id: 'p3',
-    title: 'Brand Identity Concept',
-    description: 'Redesign completo da identidade visual para uma startup de finanças.',
-    imageUrl: 'https://picsum.photos/id/20/600/400',
-    demoUrl: '#',
-    tags: ['Figma', 'Branding', 'UI/UX'],
-    category: 'Design'
-  },
-  {
-    id: 'p4',
-    title: 'Cinematic Travel Vlog',
-    description: 'Edição dinâmica com color grading profissional e transições suaves.',
-    imageUrl: 'https://picsum.photos/id/40/600/400',
-    demoUrl: '#',
-    tags: ['Premiere', 'After Effects'],
-    category: 'Vídeos Edit'
-  },
-  {
-    id: 'p5',
-    title: 'Sistema de Finanças',
-    description: 'Controle de gastos pessoais com inteligência artificial para insights.',
-    imageUrl: 'https://picsum.photos/id/180/600/400',
-    demoUrl: '#',
-    tags: ['Next.js', 'AI', 'Finance'],
-    category: 'Desenvolvimento Web'
+    id: 'portal-parintins',
+    title: 'Portal Parintins',
+    description: 'Portal de notícias regional completo com gestão de conteúdo, SEO otimizado e alta performance.',
+    imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80',
+    demoUrl: 'https://www.portalparintins.com.br/',
+    tags: ['React', 'Next.js', 'SEO', 'Portal de Notícias'],
+    category: 'Portal de Notícias'
   }
 ];
 

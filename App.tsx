@@ -259,16 +259,18 @@ const App: React.FC = () => {
               <h1 className={`mt-4 text-2xl sm:text-3xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 {profile.name}
               </h1>
-              <div className={`
-                mt-3 px-4 py-1.5 rounded-full border inline-block backdrop-blur-sm
-                ${isDarkMode 
-                  ? 'bg-purple-500/10 border-purple-500/20' 
-                  : 'bg-purple-100/50 border-purple-200'}
-              `}>
-                <p className="text-purple-500 font-bold tracking-wide text-[10px] uppercase">
-                  {profile.role}
-                </p>
-              </div>
+              {profile.role && (
+                <div className={`
+                  mt-3 px-4 py-1.5 rounded-full border inline-block backdrop-blur-sm
+                  ${isDarkMode 
+                    ? 'bg-purple-500/10 border-purple-500/20' 
+                    : 'bg-purple-100/50 border-purple-200'}
+                `}>
+                  <p className="text-purple-500 font-bold tracking-wide text-[10px] uppercase">
+                    {profile.role}
+                  </p>
+                </div>
+              )}
               <p className={`mt-4 max-w-sm leading-relaxed text-sm font-light ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                 {profile.bio}
               </p>

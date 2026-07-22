@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Construction, Folder, Code, Gamepad2, Palette, Video, Layers } from 'lucide-react';
+import { Construction, Folder, Code, Gamepad2, Palette, Video, Layers, Layout, Newspaper } from 'lucide-react';
 import { ProjectItem } from '../types';
 import { audioService } from '../services/audioService';
 
@@ -44,6 +44,8 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, isDarkMode =
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Todos': return Layers;
+      case 'Landing Page': return Layout;
+      case 'Portal de Notícias': return Newspaper;
       case 'Desenvolvimento Web': return Code;
       case 'Desenvolvimento de Jogos': return Gamepad2;
       case 'Design': return Palette;
