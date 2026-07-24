@@ -57,6 +57,15 @@ export const LINKS: LinkItem[] = [
 
 export const PROJECTS: ProjectItem[] = [
   {
+    id: 'michel-silva-bjj',
+    title: 'Clube Michel Silva BJJ',
+    description: 'Landing page para equipe e academia de Jiu-Jitsu, com foco na captação de alunos, turmas e modalidades.',
+    imageUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80',
+    demoUrl: 'https://clube-michel-silva-bjj.vercel.app/',
+    tags: ['React', 'Tailwind CSS', 'Landing Page', 'SEO'],
+    category: 'Landing Page'
+  },
+  {
     id: 'emanuel-car',
     title: 'Emanuel Car',
     description: 'Landing page moderna, responsiva e otimizada para conversão de vendas no setor automotivo.',
